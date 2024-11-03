@@ -5,15 +5,14 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          padding: const EdgeInsets.all(20.0),
+      body: Stack(
+        children: [ 
+          const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
                   child: TextField(
                   decoration: InputDecoration(
@@ -22,7 +21,7 @@ class LoginView extends StatelessWidget {
                   ),
                 )
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
                   child: TextField(
                   obscureText: true,
@@ -33,22 +32,28 @@ class LoginView extends StatelessWidget {
                   ),
                 )
               ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child:        TextButton(
-                  onPressed: () {}, 
-                  style: TextButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 34, 174, 255), 
-                    foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                    fixedSize: Size(150.0, 20.0)
-                    ), 
-                  child: const Text("LOGIN")),
-                ),
-              )
             ],
           ),
         ),
+        Container(
+          padding: EdgeInsets.all(10.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: ElevatedButton(
+              onPressed: () {}, 
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                ),
+                backgroundColor: Color.fromARGB(255, 34, 174, 255), 
+                foregroundColor: Color.fromARGB(255, 255, 255, 255),
+                minimumSize: Size.fromHeight(50), 
+              ), 
+              child: const Text("LOGIN")
+              ),
+            ),
+          )
+        ]
       ),
     );
   }
